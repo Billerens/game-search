@@ -14,7 +14,7 @@ class SearchPage extends React.Component {
   render() {
     return (
       <Layout className={style.container}>
-        <Sider breakpoint="lg" collapsedWidth="0">
+        <Sider breakpoint="xl" collapsedWidth="0">
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
               <Icon type="user" />
