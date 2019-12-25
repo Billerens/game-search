@@ -1,5 +1,5 @@
 const app = require("./app");
-const PORT = 8000;
+const PORT = process.env.PORT || 8080;
 const HOST = "0.0.0.0";
 
 server = app.listen(PORT, err => {
