@@ -8,9 +8,33 @@ import {
   showFullGameInfo,
   closeFullGameInfo
 } from "../../redux/actions/games";
+import WindowSize from "get-window-size";
+
 const { Meta } = Card;
 
 class Showcase extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      columns: Math.ceil(WindowSize().width / 450)
+    };
+  }
+
+  listenResizeEvent = () => {
+    console.log("changed");
+    this.setState({
+      columns: Math.ceil(WindowSize().width / 450)
+    });
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.listenResizeEvent);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.listenResizeEvent);
+  }
+
   handleOk = () => {
     this.props.closeFullGameInfo();
   };
@@ -22,19 +46,19 @@ class Showcase extends React.Component {
           loading={this.props.games.gamesLoading}
           grid={{
             gutter: 16,
-            column: 6
+            column: this.state.columns
           }}
           dataSource={this.props.source}
           renderItem={item => (
             <List.Item key={item.id}>
               <Card
                 hoverable
-                style={{ width: 240, overflow: "hidden" }}
+                style={{ width: "100%", overflow: "hidden" }}
                 cover={
                   <img
                     alt="example"
                     src={item.background_image}
-                    height={150}
+                    height={200}
                     onClick={() => this.props.showFullGameInfo(item)}
                   />
                 }
