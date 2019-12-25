@@ -58,7 +58,7 @@ class Showcase extends React.Component {
                   <img
                     alt="example"
                     src={item.background_image}
-                    height={230}
+                    height={200}
                     onClick={() => this.props.showFullGameInfo(item)}
                   />
                 }
