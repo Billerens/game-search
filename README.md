@@ -3,5 +3,7 @@
 # Test project using RAWG open API.
 
 Starting:
-npm i
+
+npm install
+
 npm run start
